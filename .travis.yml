@@ -30,6 +30,7 @@ matrix:
 #  allow_failures:
 #    - env: ECCUBE_VERSION=experimental/sf DATABASE_URL=sqlite:///%kernel.project_dir%/var/eccube.db COVERAGE=1
 
+
 install:
   - gem install mime-types -v 2.99.1
   - gem install mailcatcher
