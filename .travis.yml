@@ -27,9 +27,8 @@ env:
 matrix:
   fail_fast: true
   fast_finish: true
-#  allow_failures:
-#    - env: ECCUBE_VERSION=experimental/sf DATABASE_URL=sqlite:///%kernel.project_dir%/var/eccube.db COVERAGE=1
-
+  allow_failures:
+    - env: ECCUBE_VERSION=experimental/sf DATABASE_URL=sqlite:///%kernel.project_dir%/var/eccube.db COVERAGE=1
 
 install:
   - gem install mime-types -v 2.99.1
@@ -42,7 +41,8 @@ before_script:
   - git clone https://github.com/EC-CUBE/ec-cube.git
   - cd ec-cube
   # checkout version
-  - sh -c "if [ ! '${ECCUBE_VERSION}' = 'master' ]; then  git checkout -b ${ECCUBE_VERSION} refs/tags/${ECCUBE_VERSION}; fi"
+#  - sh -c "if [ ! '${ECCUBE_VERSION}' = 'master' ]; then  git checkout -b ${ECCUBE_VERSION} refs/tags/${ECCUBE_VERSION}; fi"
+  - sh -c "if [ ! '${ECCUBE_VERSION}' = 'master' ]; then  git checkout -b ${ECCUBE_VERSION}; fi"
   # update composer
   - composer selfupdate
   - composer install --dev --no-interaction -o
