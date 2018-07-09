@@ -38,11 +38,10 @@ before_script:
   # archive plugin
   - tar cvzf ${HOME}/${PLUGIN_CODE}.tar.gz ./*
   # clone ec-cube
-  - git clone https://github.com/EC-CUBE/ec-cube.git
+  - git clone https://github.com/EC-CUBE/ec-cube.git -b ${ECCUBE_VERSION}
   - cd ec-cube
   # checkout version
 #  - sh -c "if [ ! '${ECCUBE_VERSION}' = 'master' ]; then  git checkout -b ${ECCUBE_VERSION} refs/tags/${ECCUBE_VERSION}; fi"
-  - sh -c "if [ ! '${ECCUBE_VERSION}' = 'master' ]; then  git checkout -b ${ECCUBE_VERSION}; fi"
   # update composer
   - composer selfupdate
   - composer install --dev --no-interaction -o
