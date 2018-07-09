@@ -20,15 +20,15 @@ env:
     ECCUBE_AUTH_MAGIC=auth_magic
   matrix:
     # ec-cube experimental/sf
-    - ECCUBE_VERSION=experimental/sf DATABASE_URL=mysql://root:@localhost/eccube_db
-    - ECCUBE_VERSION=experimental/sf DATABASE_URL=postgres://postgres:@localhost/eccube_db
-    - ECCUBE_VERSION=experimental/sf DATABASE_URL=sqlite:///%kernel.project_dir%/var/eccube.db
-    - ECCUBE_VERSION=experimental/sf DATABASE_URL=sqlite:///%kernel.project_dir%/var/eccube.db COVERAGE=1
+    - ECCUBE_VERSION=experimental/sf DATABASE_URL=mysql://root:@localhost/eccube_db DATABASE_SERVER_VERSION=5
+    - ECCUBE_VERSION=experimental/sf DATABASE_URL=postgres://postgres:@localhost/eccube_db DATABASE_SERVER_VERSION=9
+    - ECCUBE_VERSION=experimental/sf DATABASE_URL=sqlite:///%kernel.project_dir%/var/eccube.db DATABASE_SERVER_VERSION=3
+    - ECCUBE_VERSION=experimental/sf DATABASE_URL=sqlite:///%kernel.project_dir%/var/eccube.db DATABASE_SERVER_VERSION=3 COVERAGE=1
 matrix:
   fail_fast: true
   fast_finish: true
   allow_failures:
-    - env: ECCUBE_VERSION=experimental/sf DATABASE_URL=sqlite:///%kernel.project_dir%/var/eccube.db COVERAGE=1
+    - env: ECCUBE_VERSION=experimental/sf DATABASE_URL=sqlite:///%kernel.project_dir%/var/eccube.db DATABASE_SERVER_VERSION=3 COVERAGE=1
 
 install:
   - gem install mime-types -v 2.99.1
